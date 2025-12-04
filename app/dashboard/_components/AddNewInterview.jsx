@@ -17,6 +17,7 @@ import { db } from "@/utils/db";
 import { useUser } from "@clerk/nextjs";
 import { MockInterview } from "@/utils/schema";
 import moment from "moment";
+import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -26,7 +27,7 @@ function AddNewInterview() {
   const [loading, setLoading] = useState(false);
   const [jsonResponse, setJsonResponse] = useState([]);
   const { user } = useUser();
-
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -54,7 +55,9 @@ function AddNewInterview() {
     };
     if (MockJsonResp) {
       const resp = await db.insert(MockInterview).values(data).returning();
+      console.log('resp: ',resp)
       setOpenDialog(false);
+      router.push("/dashboard/interview/"+resp[0]?.mockId);
     } else {
       console.log("Something went wrong");
     }

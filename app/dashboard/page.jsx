@@ -4,10 +4,12 @@ import AddNewInterview from "./_components/AddNewInterview";
 function Dashboard() {
   return (
     <div className="p-20">
-      <h2 className="font-bold text-2xl">Dashboard</h2>
-      <h2 className="text-grey-500">
-        Create and start your AI mockup Interview
-      </h2>
+      <div>
+        <h2 className="font-bold text-2xl">Dashboard</h2>
+        <h2 className="text-grey-500">
+          Create and start your AI mockup Interview
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 my-5">
         <AddNewInterview />
       </div>
