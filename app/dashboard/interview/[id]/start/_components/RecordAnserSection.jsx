@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import { Mic } from "lucide-react";
@@ -54,15 +54,15 @@ function RecordAnserSection() {
           onClick={isRecording ? stopSpeechToText : startSpeechToText}
         >
           {isRecording ? (
-            <h2>
+            <h2 className="text-red-500 flex gap-2">
               <Mic />
-              'Recording.....'
+              Stop Recording
             </h2>
           ) : (
             "Record Answer"
           )}
         </Button>
-        <Button onClick={()=>console.log(userAnswer)}>Show User Anser</Button>
+        <Button onClick={()=>console.log(userAnswer)}>Show User Anwser</Button>
       </div>
     </div>
   );
