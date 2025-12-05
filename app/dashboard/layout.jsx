@@ -1,12 +1,16 @@
-import React from 'react'
-import Header from './_components/Header'
+import React from "react";
+import Header from "./_components/Header";
+import { Toaster } from "@/components/ui/sonner";
 
-const Dashboardlayout = ({children}) => {
+const Dashboardlayout = ({ children }) => {
   return (
     <div>
       <Header />
-      {children}</div>
-  )
-}
 
-export default Dashboardlayout
+      {children}
+      <Toaster />
+    </div>
+  );
+};
+
+export default Dashboardlayout;
