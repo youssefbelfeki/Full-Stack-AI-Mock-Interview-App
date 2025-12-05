@@ -1,4 +1,4 @@
-import { LightbulbIcon } from "lucide-react";
+import { LightbulbIcon, Volume2 } from "lucide-react";
 import React from "react";
 
 function QuestionsSection({
@@ -6,7 +6,15 @@ function QuestionsSection({
   activeQuestionIndex,
   setActiveQuestionIndex,
 }) {
-  console.log("mockInterviewQuestion: ", mockInterviewQuestion);
+  const textToSpeech = (text) =>{
+    if('speechSynthesis' in window){
+      const speech = new SpeechSynthesisUtterance(text)
+      window.speechSynthesis.speak(speech)
+    }
+    else(
+      alert('Sorry, Your Browser not support')
+    )
+  }
   return (
     <div className="p-5 border rounded-lg my-10">
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -37,6 +45,7 @@ function QuestionsSection({
       <h2 className="my-5 text-md md:text-lg">
         {mockInterviewQuestion[activeQuestionIndex]?.question}
       </h2>
+      <Volume2 className="cursor-pointer" onClick={()=>textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)}/>
       <div className="border rounded-lg bg-blue-100 mt-20">
         <h2 className="flex gap-2 items-center text-primary">
           <LightbulbIcon />
@@ -45,6 +54,7 @@ function QuestionsSection({
         <h2 className="text-sm text-primary p-5 my-5">
           {process.env.NEXT_PUBLIC_QUESTION_NOTE}
         </h2>
+
       </div>
     </div>
   );
