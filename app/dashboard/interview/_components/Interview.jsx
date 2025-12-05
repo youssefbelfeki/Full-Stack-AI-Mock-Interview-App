@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 
 function InterviewId({ id }) {
-  console.log("id: ", id);
   const [interviewData, setInterviewData] = useState([]);
   const [webcamInable, setWebcamInable] = useState(false);
   useEffect(() => {
@@ -21,7 +20,6 @@ function InterviewId({ id }) {
       .select()
       .from(MockInterview)
       .where(eq(MockInterview.mockId, id));
-    console.log("result: ", result);
     setInterviewData(result[0]);
   };
   return (
